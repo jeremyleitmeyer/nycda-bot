@@ -3,18 +3,7 @@ const getBotToken = require('../../helpers/get_bot_token.js')
 const message = require('../../utils/message.js')
 
 /**
-* Slack Slash Command Handler:
-*   This function receives slash commands from Slack and dispatches
-*   the appropriate handler. You should use this function as the endpoint
-*   for all commands, and place commands in /functions/commands/NAME.js,
-*   where NAME is the name of your command.
-*
-*   You can test individual slash commands from the command line with:
-*     $ lib .commands.NAME [username] [channel] [text]
-*
-*   You should not need to modify this file to get a basic Slack app running.
-*
-* @returns {object}
+ @returns {object}
 */
 module.exports = (context, callback) => {
   let command = context.params
