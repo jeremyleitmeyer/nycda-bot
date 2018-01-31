@@ -1,7 +1,7 @@
 const lib = require('lib')({token: process.env.STDLIB_TOKEN})
 
 
-function num(x){
+function newAssignment(){
   return x * 4
 }
 /**
@@ -22,6 +22,7 @@ function num(x){
 */
 module.exports = (user, channel, text = '' , command = {} , botToken = null , callback) => {
   callback(null, {
+    var test = text.split(' ')
     text: num(text)
   })
 }
