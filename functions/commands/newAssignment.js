@@ -1,4 +1,4 @@
-const lib = require('lib')({token: process.env.STDLIB_TOKEN});
+const lib = require('lib')({token: process.env.STDLIB_TOKEN})
 
 /**
 * /hello
@@ -16,8 +16,8 @@ const lib = require('lib')({token: process.env.STDLIB_TOKEN});
 * @param {string} botToken The bot token for the Slack bot you have activated
 * @returns {object}
 */
-module.exports = (user, channel, text = '', command = {}, botToken = null, callback) => {
+module.exports = (user, channel, text = '' , command = {} , botToken = null , callback) => {
   callback(null, {
     text: `Hello ${text}`
-  });
-};
+  })
+}
