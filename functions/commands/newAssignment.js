@@ -22,7 +22,7 @@ function newAssignment(){
 */
 module.exports = (user, channel, text = '' , command = {} , botToken = null , callback) => {
   callback(null, {
-    var test = text.split(' ')
+    var t = text.split(' '),
     text: num(text)
   })
 }
