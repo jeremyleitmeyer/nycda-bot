@@ -1,23 +1,32 @@
 const lib = require('lib')({
   token: process.env.STDLIB_TOKEN
-});
-const Assignemnt = require('../../models/Assignment')
-const mongoose = require('mongoose');
+})
+const Assignment = require('../../models/Assignment')
+const mongoose = require('mongoose')
+// mongoose stuff
+mongoose.connect(process.env.MONGO_TOKEN, {
+  useMongoClient: true
+})
+// *****************
 
-function newAssignment(text) {
+function newAssignment (text) {
+  var date = new Date()
+  var dateStr = date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear()
+
   var t = text.split(' ')
   var title = t[0]
   var due = t[1]
-  var currentAssignment = Assignment.findOne({
-    title: title
-  }, function (err, assignment) {
-    var newAssignemnt = new Assignemnt({
-      title: title,
-      due: due
-    }).save();
-  });
-  return `${title} was added, with the due date of ${due}`
-};
+
+  var newAssignment = new Assignment({
+    title: title,
+    due: due,
+    added: dateStr
+  }).save()
+
+  mongoose.disconnect()
+
+  return `${title} was added at ${dateStr}, with the due date of ${due}`
+}
 
 /**
  * @param {string} user The user id of the user that invoked this command (name is usable as well)
@@ -27,7 +36,7 @@ function newAssignment(text) {
  * @param {string} botToken The bot token for the Slack bot you have activated
  * @returns {object}
  */
-module.exports = (user, channel, text = '', command = {}, botToken = null, callback) => {
+module.exports = (user, channel, text = '' , command = {} , botToken = null , callback) => {
   callback(null, {
     // this does not work correctly yet. Will fix -Jeremy
     text: newAssignment(text)

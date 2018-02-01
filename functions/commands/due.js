@@ -1,5 +1,4 @@
 const lib = require('lib')({token: process.env.STDLIB_TOKEN})
-const assignment = require('../../helpers/assignments').assignments
 
 /**
 * @param {string} user The user id of the user that invoked this command (name is usable as well)

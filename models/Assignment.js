@@ -4,7 +4,7 @@ const {Schema} = mongoose
 const assignmentSchema = new Schema({
   title: String,
   due: String,
-  date: new Date()
+  added: String
 })
 
 module.exports = mongoose.model('assignments', assignmentSchema)
